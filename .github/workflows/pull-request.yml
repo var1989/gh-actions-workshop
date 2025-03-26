@@ -61,6 +61,8 @@ jobs:
   post-comment:
     runs-on: ubuntu-latest
 
+    permissions:
+      pull-requests: write
     needs: [build, hello_world_job]
 
     steps:
