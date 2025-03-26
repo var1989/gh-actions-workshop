@@ -27,3 +27,24 @@ jobs:
     steps:
       - name: Print message to terminal
         run: echo "Hello 🌏!"
+  build:
+    # As with workflow names (and even step names), job names are not
+    # strictly required, but they are good practice.
+    name: Build on ubuntu latest
+
+    # There are many virtual machines we can run our jobs on. The most
+    # common one is `ubuntu-latest`. See this page for a full list of
+    # officially supported runners: https://github.com/actions/runner-images
+    runs-on: ubuntu-latest
+
+    # Each job can have multiple steps. These will be run in sequence.
+    steps:
+      - name: Checkout repository
+        # To reference external workflows, we use the `uses` keyword.
+        # The thing after the `@` is the version of the workflow, and
+        # references a Git tag.
+        uses: actions/checkout@v4
+      - name: Install dependencies
+        run: npm ci
+      - name: Build
+        run: npm run build
