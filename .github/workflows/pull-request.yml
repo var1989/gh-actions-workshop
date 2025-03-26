@@ -28,6 +28,7 @@ jobs:
     steps:
       - name: Print message to terminal
         run: echo "Hello 🌏!"
+    needs: build
   build:
     # As with workflow names (and even step names), job names are not
     # strictly required, but they are good practice.
