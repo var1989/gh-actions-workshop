@@ -25,8 +25,7 @@ jobs:
     name: Job1
     runs-on: ubuntu-latest
     steps:
-      - name: Run test
-        run: npm run test
+
   hello_world_job:
     # As with workflow names (and even step names), job names are not
     # strictly required, but they are good practice.
@@ -62,3 +61,9 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
+      - name: Lint check
+        run: npm run lint:check
+      - name: Lint Fix
+        run: npm run lint:fix
+      - name: Run test
+        run: npm run test
