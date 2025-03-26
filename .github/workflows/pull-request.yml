@@ -28,7 +28,9 @@ jobs:
     steps:
       - name: Print message to terminal
         run: echo "Hello 🌏!"
+    needs: build
   build:
+
     # As with workflow names (and even step names), job names are not
     # strictly required, but they are good practice.
     name: Build on ubuntu latest
@@ -55,3 +57,18 @@ jobs:
         run: npm run lint:fix
       - name: Run test
         run: npm run test
+
+  post-comment:
+    runs-on: ubuntu-latest
+
+    permissions:
+      pull-requests: write
+    needs: [build, hello_world_job]
+
+    steps:
+      - name: Post comment
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            All jobs have finished! 🎉
