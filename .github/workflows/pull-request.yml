@@ -13,18 +13,6 @@ on:
 # Jobs are what actually do the work. We can add as many jobs as we want.
 # These will be run in parallel.
 jobs:
-  job1:
-    name: Job1
-    runs-on: ubuntu-latest
-    steps:
-      - name: Lint check
-        run: npm run lint:check
-      - name: Lint Fix
-        run: npm run lint:fix
-  job2:
-    name: Job1
-    runs-on: ubuntu-latest
-    steps:
 
   hello_world_job:
     # As with workflow names (and even step names), job names are not
