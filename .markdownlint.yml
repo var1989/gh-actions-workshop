@@ -1,0 +1,10 @@
+extends: markdownlint/style/relaxed
+
+# Line length
+MD013: false
+
+# Ordered list item prefix
+MD029: false
+
+# No inline HTML
+MD033: false

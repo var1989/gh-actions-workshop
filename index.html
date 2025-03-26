@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>GitHub Actions workshop</title>
+    <script>
+      const linkHtml = `<link
+        rel="icon"
+        href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text y=%22.9em%22 font-size=%2290%22&gt;%EMOJI%&lt;/text&gt;&lt;/svg&gt;"
+      />`;
+
+      document.head.insertAdjacentHTML("beforeend", linkHtml);
+
+      const randomEmoji = getRandomEmoji();
+      setFavicon(randomEmoji);
+
+      document.addEventListener("visibilitychange", () => {
+        if (document.hidden) {
+          setFavicon("😴");
+        } else {
+          const randomEmoji = getRandomEmoji();
+          setFavicon(randomEmoji);
+        }
+      });
+
+      function getRandomEmoji() {
+        const emoji = [
+          "🐶",
+          "👹",
+          "🤓",
+          "🥳",
+          "😻",
+          "😀",
+          "😃",
+          "😄",
+          "😁",
+          "😆",
+          "😌",
+          "😊",
+          "😇",
+          "🙂",
+          "🙃",
+          "🥰",
+          "😍",
+          "🤩",
+          "😤",
+        ];
+
+        return emoji[Math.floor(Math.random() * emoji.length)];
+      }
+
+      function setFavicon(emoji) {
+        const faviconSvgTemplate = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">%EMOJI%</text></svg>`;
+        const faviconHrefTemplate = `data:image/svg+xml,${faviconSvgTemplate}`;
+
+        const favicon = document.querySelector("[rel=icon]");
+        favicon.href = faviconHrefTemplate.replace("%EMOJI%", emoji);
+      }
+    </script>
+    <script type="module" src="/src/index.tsx"></script>
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      :root {
+        font-size: min(calc(0.8rem + 0.5vw), 24px);
+      }
+
+      body {
+        font-family:
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          Oxygen,
+          Ubuntu,
+          Cantarell,
+          "Open Sans",
+          "Helvetica Neue",
+          sans-serif;
+        color: #333;
+        line-height: 1.6;
+        margin: 0;
+        padding: 4rem 0;
+      }
+
+      button,
+      input,
+      select,
+      textarea {
+        font-family: inherit;
+        font-size: inherit;
+        line-height: inherit;
+      }
+
+      .container,
+      main {
+        margin: 0 auto;
+        max-width: 50rem;
+        width: calc(100% - 2rem);
+      }
+
+      h1 {
+        font-size: 2rem;
+        font-weight: 700;
+        line-height: 1.2;
+        margin: 0 0 1rem;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        line-height: 1.2;
+        margin: 0 0 1rem;
+      }
+
+      h3 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        line-height: 1.2;
+        margin: 0 0 1rem;
+      }
+
+      h4 {
+        font-size: 1rem;
+        font-weight: 700;
+        line-height: 1.2;
+        margin: 0 0 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main id="root"></main>
+  </body>
+</html>
