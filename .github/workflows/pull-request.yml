@@ -17,18 +17,16 @@ jobs:
     name: Job1
     runs-on: ubuntu-latest
     steps:
-      - name: Step 1
-        run: echo "Step 1"
-      - name: Step 2
-        run: echo "Step 2"
+      - name: Lint check
+        run: npm run lint:check
+      - name: Lint Fix
+        run: npm run lint:fix
   job2:
     name: Job1
     runs-on: ubuntu-latest
     steps:
-      - name: Step 1
-        run: echo "Step 1"
-      - name: Step 2
-        run: echo "Step 2"
+      - name: Run test
+        run: npm run test
   hello_world_job:
     # As with workflow names (and even step names), job names are not
     # strictly required, but they are good practice.
